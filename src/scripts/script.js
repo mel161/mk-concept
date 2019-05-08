@@ -1,5 +1,4 @@
 import 'jquery';
-import 'slick-carousel';
 
 function addAnimateCSS(element, animationName) {
   var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
@@ -65,124 +64,6 @@ $(document).ready(function() {
     });
   });
 
-  $('.slider--tablet').each(function(key, item) {
-    var sliderIdName = 'slider--tablet-' + key;
-    var sliderNavIdName = 'slider--content-' + key;
-
-    this.id = sliderIdName;
-    $('.slider--content')[key].id = sliderNavIdName;
-
-    var sliderId = '#' + sliderIdName;
-    var sliderNavId = '#' + sliderNavIdName;
-
-    $(sliderId)
-      .slick({
-        rows: 0,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        fade: true,
-        infinite: false,
-        initialSlide: 0,
-        // asNavFor: '.slider--content'
-        asNavFor: sliderNavId
-      })
-      .on('afterChange', (event, slick, currentSlide) => {
-        slick.$slides.each(function(indx) {
-          if (indx !== currentSlide) {
-            $(this)
-              .find('.image--content img')
-              .removeClass('animate');
-          } else {
-            $(this)
-              .find('.image--content img')
-              .addClass('animate');
-          }
-        });
-
-        // slick.$slides
-        //   .eq(currentSlide)
-        //   .find('.image--content img')
-        //   .addClass('animate');
-      });
-
-    $(sliderNavId)
-      .slick({
-        rows: 0,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        dots: true,
-        infinite: false,
-        initialSlide: 0,
-        // asNavFor: '.slider--tablet'
-        asNavFor: sliderId
-      })
-      .on('afterChange', (event, slick, currentSlide) => {
-        if (slick.$slides.length - 1 == currentSlide) {
-          mouseWheelReturn(slick);
-        }
-      });
-  });
-
-  // $('.slider--tablet')
-  //   .slick({
-  //     rows: 0,
-  //     slidesToShow: 1,
-  //     slidesToScroll: 1,
-  //     arrows: false,
-  //     fade: true,
-  //     infinite: false,
-  //     initialSlide: 0,
-  //     // asNavFor: '.slider--content'
-  //     asNavFor: $(this)
-  //       .parent('.block')
-  //       .find('.slider--content')
-  //   })
-  //   .on('afterChange', (event, slick, currentSlide) => {
-  //     console.log(currentSlide);
-  //   });
-
-  // $('.slider--content')
-  //   .slick({
-  //     rows: 0,
-  //     slidesToShow: 1,
-  //     slidesToScroll: 1,
-  //     arrows: false,
-  //     dots: true,
-  //     infinite: false,
-  //     initialSlide: 0,
-  //     // asNavFor: '.slider--tablet'
-  //     asNavFor: $(this)
-  //       .parent('.block')
-  //       .find('.slider--tablet')
-  //   })
-  //   .on('afterChange', (event, slick, currentSlide) => {
-  //     if (slick.$slides.length - 1 == currentSlide) {
-  //       mouseWheelReturn(slick);
-  //     }
-  //   });
-
-  function mouseWheel($slider) {
-    $(window).on('wheel', { $slider: $slider }, mouseWheelHandler);
-  }
-  function mouseWheelReturn($slider) {
-    // if($slider.$slider.index() < 2) {
-    //   $(window).scrollTop($slider.$slider.next('.slider').attr('data-st') - $(document.body).attr('wh')/2)
-    // }
-    $(window).off('wheel');
-  }
-  function mouseWheelHandler(event) {
-    event.preventDefault();
-    const $slider = event.data.$slider;
-    const delta = event.originalEvent.deltaY;
-    if (delta < 0) {
-      $slider.slick('slickPrev');
-    } else {
-      $slider.slick('slickNext');
-    }
-  }
-
   $(window).mousemove(function(e) {
     var change;
     var xpos = e.clientX;
@@ -199,23 +80,15 @@ $(document).ready(function() {
 
   var animObj = $('[data-emergence]');
 
-  function addSt() {
-    animObj.each(function(index, element) {
-      // element == this
-      $(element).attr('data-st', parseInt($(element).offset().top));
+  animObj.each(function(index, element) {
+    // element == this
+    $(element).attr('data-st', parseInt($(element).offset().top));
 
-      if ($(element).attr('data-st') < 700) {
-        addAnimateCSS(element, $(element).attr('data-animation'));
-        $(element).attr('data-emergence', 'visible');
-      }
-    });
-  }
-
-  $('.slider').on('init', function(event, slick) {
-    addSt();
+    if ($(element).attr('data-st') < 700) {
+      addAnimateCSS(element, $(element).attr('data-animation'));
+      $(element).attr('data-emergence', 'visible');
+    }
   });
-
-  addSt();
 
   $(window).on('DOMSubtreeModified', document.body, function() {
     var st = parseInt($('body').attr('st'));
