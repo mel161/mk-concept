@@ -10,10 +10,10 @@
   // Modifiers
   &--main {
     // Style
+    margin: -60px 0 0 17px;
 
     // Media Queries
     @media screen and (min-width: 1400px) {
-      margin: -94px -16px 0 0;
     }
   }
 
@@ -22,8 +22,7 @@
     line-height: 66px;
 
     .section--result & {
-      padding-top: 89px;
-      margin-bottom: 52px;
+      margin-bottom: 44px;
     }
 
     // Media Queries
@@ -35,19 +34,12 @@
     // Style
     margin-bottom: 33px;
 
+    .section--process & {
+      margin: 0 0 35px;
+    }
+
     // Media Queries
     @media screen and (min-width: 1400px) {
-    }
-
-    .block & {
-      position: absolute;
-      width: auto;
-      top: 96px;
-      left: 800px;
-    }
-
-    .block--reverse & {
-      left: 0;
     }
   }
 }

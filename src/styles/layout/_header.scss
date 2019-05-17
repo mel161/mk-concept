@@ -23,7 +23,7 @@
     // Style
     display: flex;
     position: absolute;
-    top: 32px;
+    top: 26px;
     left: auto;
     justify-content: space-between;
     color: $grey;
@@ -58,7 +58,7 @@
     align-items: center;
     flex-direction: column-reverse;
     justify-content: center;
-    min-height: 800px;
+    min-height: 700px;
 
     // Media Queries
     @media screen and (min-width: 1400px) {
@@ -70,7 +70,7 @@
     position: relative;
 
     .section--prep & {
-      padding: 121px 0 53px;
+      padding: 115px 0 52px;
     }
 
     .section--process & {
@@ -78,10 +78,10 @@
     }
 
     .section--result & {
-      margin: 158px 0 0;
+      margin: 101px 0 0;
 
       .header__info {
-        top: 0;
+        top: -89px;
       }
     }
 

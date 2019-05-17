@@ -1,4 +1,5 @@
 import 'jquery';
+import 'slick-carousel';
 
 function addAnimateCSS(element, animationName) {
   var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
@@ -56,27 +57,50 @@ $(document).ready(function() {
     $(document.body).attr('st', $(this).scrollTop());
   });
 
-  $('.image--object').each(function(index, element) {
-    // element == this
-    $(element).attr({
-      'data-factor-x': Math.random(),
-      'data-factor-y': Math.random()
-    });
+  $('.slider').slick({
+    rows: 0,
+    centerMode: true,
+    dots: false,
+    infinite: true,
+    slidesToShow: 1,
+    speed: 250,
+    variableWidth: true,
+    centerPadding: 0
   });
 
-  $(window).mousemove(function(e) {
-    var change;
-    var xpos = e.clientX;
-    var ypos = e.clientY;
+  console.log($('.slider').width() - 1000 - 140);
 
-    $('.image--object').each(function(index, element) {
-      // element == this
-      var factorX = $(element).attr('data-factor-x');
-      var factorY = $(element).attr('data-factor-y');
+  // $('.image--object').each(function(index, element) {
+  //   // element == this
+  //   $(element).attr({
+  //     'data-factor-x': Math.random(),
+  //     'data-factor-y': Math.random()
+  //   });
+  // });
 
-      $(element).css('transform', 'translate(' + (xpos * factorX) / 50 + '% ,' + (ypos * factorY) / 80 + '%');
-    });
+  $('.panel').on('mousemove', function() {
+    console.log(
+      $(':hover')
+        .last()
+        .attr('class')
+    );
   });
+
+  // $(window).mousemove(function(e) {
+  //   var change;
+  //   var xpos = e.clientX;
+  //   var ypos = e.clientY;
+
+  //   console.log(e.target);
+
+  //   // $('.image--object').each(function(index, element) {
+  //   //   // element == this
+  //   //   var factorX = $(element).attr('data-factor-x');
+  //   //   var factorY = $(element).attr('data-factor-y');
+
+  //   //   // $(element).css('transform', 'translate(' + (xpos * factorX) / 50 + '% ,' + (ypos * factorY) / 80 + '%');
+  //   // });
+  // });
 
   var animObj = $('[data-emergence]');
 
@@ -98,9 +122,6 @@ $(document).ready(function() {
       if (stEl >= st - wh && stEl < st + wh) {
         addAnimateCSS(element, $(element).attr('data-animation'));
         $(element).attr('data-emergence', 'visible');
-        if ($(element).hasClass('slider--content')) {
-          mouseWheel($(element));
-        }
       }
     });
   });

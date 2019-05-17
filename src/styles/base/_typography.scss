@@ -14,6 +14,14 @@
 @font-face {
   font-family: 'Muller';
   font-display: fallback;
+  font-weight: bold;
+  font-style: italic;
+  src: url('fonts/MullerBoldItalic.woff2') format('woff2'), url('fonts/MullerBoldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Muller';
+  font-display: fallback;
   font-weight: 300;
   font-style: normal;
   src: url('fonts/MullerLight.woff2') format('woff2'), url('fonts/MullerLight.woff') format('woff');
@@ -22,9 +30,25 @@
 @font-face {
   font-family: 'Muller';
   font-display: fallback;
+  font-weight: 300;
+  font-style: italic;
+  src: url('fonts/MullerLightItalic.woff2') format('woff2'), url('fonts/MullerLightItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Muller';
+  font-display: fallback;
   font-weight: normal;
   font-style: normal;
   src: url('fonts/MullerRegular.woff2') format('woff2'), url('fonts/MullerRegular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Din Display Pro';
+  font-display: fallback;
+  font-weight: bold;
+  font-style: normal;
+  src: url('fonts/PFDinTextCondPro-Bold.woff2') format('woff2'), url('fonts/PFDinTextCondPro-Bold.woff') format('woff');
 }
 
 //! set font variables
@@ -56,18 +80,41 @@ h1 {
   .section--result & {
     margin: 0 0 29px;
   }
+
+  .section--process & {
+    margin: 0 0 74px;
+  }
+
+  &--selected {
+    padding: 56px 39px 58px;
+    border: 1px solid #dcdcdc;
+
+    .section--process & {
+      margin: 0 0 160px;
+      line-height: 17px;
+    }
+  }
 }
 
 .text {
   line-height: inherit;
-  word-spacing: -2px;
-  letter-spacing: 0.37px;
+  // word-spacing: -2px;
+  // letter-spacing: 0.37px;
 
   // Modifiers
+
+  &--second-font {
+    font-family: 'Din Display Pro';
+  }
 
   /* Uppercase */
   &--uppercase {
     text-transform: uppercase;
+  }
+
+  /* Font Style */
+  &--italic {
+    font-style: italic;
   }
 
   /* Font Weight */
@@ -121,6 +168,10 @@ h1 {
     color: $light-grey;
   }
 
+  &--medium-grey {
+    color: $medium-grey;
+  }
+
   &--primary {
     color: $color-primary;
   }
@@ -134,5 +185,10 @@ h1 {
     white-space: nowrap;
     overflow: hidden;
     color: transparent;
+    line-height: 0;
+  }
+
+  &--lh {
+    line-height: 1.2;
   }
 }

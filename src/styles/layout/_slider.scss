@@ -1,0 +1,39 @@
+.slider {
+  // Style
+  height: 500px;
+
+  // Media Queries
+  @media screen and (min-width: 1400px) {
+  }
+
+  // Elements
+  &__item {
+    // Style
+    // @include aspect-ratio(982, 480);
+
+    margin: 0 70px;
+    max-width: 982px;
+    height: auto;
+    transition: all 600ms ease-in-out;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    &:not(.slick-current) {
+      opacity: 0.6;
+      max-width: 818px;
+      height: 500px;
+    }
+
+    // Media Queries
+    @media screen and (min-width: 1400px) {
+    }
+
+    .image--slider {
+      // position: absolute;
+      // top: 50%;
+    }
+  }
+
+  // Modifiers
+}
